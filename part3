@@ -1,0 +1,49 @@
+import { useState } from "react";
+
+function Test() {
+const [car,setCar]=useState([]);
+const[caryear,setYear]=useState();
+const[carmodel,setModel]=useState("");
+const[carmake,setMake]=useState("");
+
+function handelAdd(){
+  const newcar={ year:caryear,
+                 model:carmodel,
+                 make:carmake}
+setCar (c=>[...c,newcar])
+
+};
+function HandelRemove(indexremove){
+  setCar(c=>c.filter((_,i)=>i !== indexremove));
+
+};
+function updateyear(e){
+  setYear(e.target.value);
+
+};
+function updatemodel(e){
+setModel(e.target.value);
+};
+function updatemake(e){
+setMake(e.target.value);
+};
+
+
+  return (
+   <div>
+    <h1>Cars</h1>
+    <ul>
+      {car.map((cars,index)=><li key={index}>{cars.year}   {cars.make}   {cars.model} <button onClick={()=>HandelRemove(index)}>Remove</button></li>)}
+     
+    </ul>
+
+    <input type="number"  onChange={updateyear} value={caryear} placeholder=" year...."/><br />
+    <input type="text" onChange={updatemake}placeholder="make...." value={carmake}/><br />
+        <input type="text" onChange={updatemodel} value={carmodel} placeholder="model...."/><br />
+
+    <button onClick={handelAdd}>Add</button>
+   </div>
+  );
+}
+
+export default Test;
