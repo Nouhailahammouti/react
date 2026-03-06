@@ -1,0 +1,59 @@
+import { useState } from "react";
+
+function Test() {
+const [task,setTask]=useState( ["Study", "Eat", "Sleep"]);
+const[newtask,setNewsask]=useState("");
+
+function Addtask(){
+  if(newtask.trim()!==""){
+    setTask(t=>[...t, newtask]);
+  setNewsask("");
+  }
+  
+};
+function removeTask(index){
+const update=task.filter((_,i)=>i !==index)
+setTask(update);
+};
+function Handelchengetask(e){
+  setNewsask(e.target.value)
+};
+
+  function update(index, newValue) {
+    if (newValue.trim() !== "") {
+      setTask(t => {
+        const updated = [...t];
+        updated[index] = newValue;
+        return updated;
+      });
+      setNewsask("");
+    }
+  }; // new value it's the value that we ganna entre, is a copy of the task array., and the last one  index it's  the value that we wanna updet or te thing that we want to click on for change.
+
+
+
+  return (
+   <div className="container">
+
+<h1>TO DO LIST</h1>
+
+<input type="text" value={newtask} onChange={Handelchengetask}/>
+<button className="add-btn" onClick={Addtask}>Add</button> 
+
+<ol>
+{task.map((tasks,index)=>
+<li key={index}>
+<span>{tasks}</span>
+<button className="delete-btn" onClick={()=>removeTask(index)}>Delete</button>
+<button className="update-btn" 
+              onClick={() => update(index, newtask)}>
+Update
+</button></li>
+)}
+</ol>
+
+</div>
+  );
+}
+
+export default Test;
