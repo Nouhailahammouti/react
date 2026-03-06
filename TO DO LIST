@@ -19,15 +19,13 @@ function Handelchengetask(e){
   setNewsask(e.target.value)
 };
 
-  function update(index, newValue) {
-    if (newValue.trim() !== "") {
-      setTask(t => {
-        const updated = [...t];
-        updated[index] = newValue;
-        return updated;
-      });
-      setNewsask("");
-    }
+  function update(index) {
+   
+    const newValue = prompt("Enter new value:");
+          if (!newValue) return;
+   const updated= [...task];
+    updated[index] = newValue;
+    setTask(updated);
   }; // new value it's the value that we ganna entre, is a copy of the task array., and the last one  index it's  the value that we wanna updet or te thing that we want to click on for change.
 
 
