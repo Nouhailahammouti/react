@@ -1,0 +1,157 @@
+import { useState } from "react";
+
+function Test() {
+const[food,setFood]=useState(["BANANA","APPLE","ORANGE"])
+
+
+
+function Addfood(){
+  const value= document.getElementById("inputvalue").value;
+  document.getElementById("inputvalue").value="";
+  setFood([...food,value]);
+
+}
+function remove(index){
+const remove=food.filter((_,i)=>i !==index)
+setFood(remove);
+
+};
+   return (
+    <div className="container">
+      <h1>🍎 Food List</h1>
+
+      <div className="input-box">
+        <input type="text" id="inputvalue" placeholder="Enter a food name" />
+        <button onClick={Addfood}>ADD</button>
+      </div>
+
+      <ul>
+        {food.map((food, index) => (
+          <li key={index}>{food} <button onClick={()=>remove(index)}>remove</button></li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+
+
+
+
+//css style:
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.container{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding:30px;
+  border-radius:20px;
+  width:400px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  color:white;
+}
+
+h1{
+  text-align:center;
+  margin-bottom:20px;
+  letter-spacing:1px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin-bottom:10px;
+  outline:none;
+  font-size:14px;
+}
+
+.add-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(90deg,#00f260,#0575e6);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.add-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+ol{
+  margin-top:20px;
+  padding:0;
+}
+
+li{
+  list-style:none;
+  background:white;
+  color:#333;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:0.3s;
+}
+
+li:hover{
+  transform:translateX(5px);
+}
+
+.delete-btn{
+  background:#ff4b5c;
+  border:none;
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.delete-btn:hover{
+  background:#ff1e3c;
+}
+.update-btn{
+  background:#f9a825;
+  border:none;
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.update-btn:hover{
+  background:#f57f17;
+}
+button{
+  padding:10px 15px;
+  border:none;
+  background:#667eea;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#4c5bd4;
+}
+
+export default Test;
