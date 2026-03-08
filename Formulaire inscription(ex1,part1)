@@ -1,0 +1,30 @@
+import { useState } from "react";
+
+function Test() {
+const[nome,setNome]=useState([])
+const[prenome,setPrenome]=useState([])
+function Add(){
+  const value=document.getElementById("inputnome").value;
+  document.getElementById("inputnome").value="";
+  const value2=document.getElementById("inputeprenome").value;
+    document.getElementById("inputeprenome").value="";
+ setNome([...nome,value]);
+ setPrenome([...prenome,value2])
+
+}
+
+   return (
+    <div><h1> Formulaire inscription</h1>
+    <p>Nome:</p>
+    <input type="text"  placeholder="nome..." id="inputnome"/><br />
+    <p>Prenome:</p>
+    <input type="text" placeholder="prenome..." id="inputeprenome" /><button onClick={Add}>Add</button>
+
+  <ul>
+    {nome.map((noms,index)=><li key={index}>{prenome} {noms}</li>)}
+  </ul>
+    </div>
+  );
+}
+
+export default Test;
