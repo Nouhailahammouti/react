@@ -1,0 +1,32 @@
+import {  useState } from "react";
+
+function Test() {
+const[essais,setEssais]=useState(0);
+const [message, setMessage] = useState("");
+function startplayin(){
+ const result= Math.floor(Math.random() * 6) + 1;
+  setEssais(prev => prev + 1);
+ const usenambre= Number (document.getElementById("input").value);
+
+
+ if (usenambre < 1 || usenambre >6){
+   setMessage("You have to try a number between 1 and 6");
+ }
+  else if (result === usenambre){
+      setMessage  ("correct ,wnna play again?")
+ }
+ else{
+ setMessage("wring tray again"+result)
+ }
+   
+ 
+}
+   return (
+    <div>
+      <h1> jeu de Dé🎲 </h1>
+      <p> give us a nimbre betwin  1 and 6</p> <input type="text"  id="input"/><button onClick={startplayin}>play</button><p>{message}</p>
+    </div>
+  );
+}
+
+export default Test;
