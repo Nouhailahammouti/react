@@ -1,0 +1,90 @@
+// THE FIRST PAGE:
+import {  useState } from "react";
+import Login from "./Login";
+
+function Test() {
+const[nome,setNome]=useState("");
+const[prenom,setPrenom]=useState("")
+const[passwrd,setPasswor]=useState("");
+const[messg,setMessg]=useState("")
+const[log,setLog]=useState(false)
+
+function loginn(){
+if (passwrd==="nouha"){
+  setLog(true);
+}
+else{
+ setMessg ( "the passworc incorrect");
+}
+
+}
+function handelchangenome(e){
+  setNome(e.target.value)
+}
+function handelchangePrenome(e){
+  setPrenom(e.target.value)
+}
+
+function handelchangepass(e){
+  setPasswor(e.target.value)
+
+}
+  if(log){
+  return <Login nome={nome} prenom={prenom}/>
+}
+
+return (
+  <div className="login-container">
+    <div className="login-box">
+      <h2>Login</h2>
+
+      <label>Name</label>
+      <input type="text" id="nome" onChange={handelchangenome} />
+
+      <label>Prenom</label>
+      <input type="text" id="prenom" onChange={handelchangePrenome} />
+
+      <label>Password</label>
+      <input type="password" id="pass" onChange={handelchangepass} />
+
+      <button onClick={loginn}>Log in</button>{messg}
+    </div>
+  </div>
+);
+}
+
+
+
+// THE SECOND PAGE:
+import {  useState } from "react";
+import Test from "./Test";
+function Login(props) {
+    const[back,setBack]=useState(false)
+ function Back(){
+  setBack  (<Test/>) 
+ }
+  if(back){
+    return <Test/>
+  }
+return(
+  <div className="login-container">
+    <div className="login-box welcome-box">
+      <h2>Welcome</h2>
+      <p className="welcome-message">
+        Welcome {props.nome} {props.prenom}
+      </p>
+  
+<button className="return-btn" onClick={Back}>BACK</button>
+<button className="return-btn" >CUNTENU</button>   </div> 
+
+ </div> 
+
+
+
+)
+
+}
+
+export default Login;
+
+export default Test;
