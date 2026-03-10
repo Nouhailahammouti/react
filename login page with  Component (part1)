@@ -53,38 +53,47 @@ return (
 );
 }
 
+export default Test;
 
 
 // THE SECOND PAGE:
-import {  useState } from "react";
+import { useState } from "react";
 import Test from "./Test";
+import Home from "./Home";
+
 function Login(props) {
-    const[back,setBack]=useState(false)
- function Back(){
-  setBack  (<Test/>) 
- }
-  if(back){
-    return <Test/>
+  const [back, setBack] = useState(false);
+  const [home, setHome] = useState(false);
+
+  function goBack() {
+    setBack(true);
   }
-return(
-  <div className="login-container">
-    <div className="login-box welcome-box">
-      <h2>Welcome</h2>
-      <p className="welcome-message">
-        Welcome {props.nome} {props.prenom}
-      </p>
-  
-<button className="return-btn" onClick={Back}>BACK</button>
-<button className="return-btn" >CUNTENU</button>   </div> 
 
- </div> 
+  function goHome() {
+    setHome(true);
+  }
 
+  if (back) {
+    return <Test />;
+  }
 
+  if (home) {
+    return <Home />;
+  }
 
-)
+  return (
+    <div className="login-container">
+      <div className="login-box welcome-box">
+        <h2>Welcome</h2>
+        <p className="welcome-message">
+          Welcome {props.nome} {props.prenom}
+        </p>
 
+        <button className="return-btn" onClick={goBack}>BACK</button>
+        <button className="return-btn" onClick={goHome}>CONTENU</button>
+      </div>
+    </div>
+  );
 }
 
 export default Login;
-
-export default Test;
