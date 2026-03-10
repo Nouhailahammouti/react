@@ -1,0 +1,15 @@
+
+function Home() {
+  return (
+    <nav className="top-menu">
+      <div className="logo">MyApp</div>
+      <ul className="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Card</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Home;
