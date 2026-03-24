@@ -1,0 +1,72 @@
+//What data you receive
+
+The API returns a list (array) like this:
+[
+  {
+    "_id": "s1",
+    "nomsal": "Alami",
+    "prenomsal": "Sara",
+    "fonction": "Technicien",
+    "service": {
+      "codeser": "1",
+      "nomser": "informatique"
+    }
+  }
+]
+🧠 Meaning of each field
+
+For each employee:
+
+_id → unique ID
+nomsal → last name
+prenomsal → first name
+fonction → job (Technicien, etc.)
+service → object that contains:
+codeser → service code
+nomser → service name (e.g. informatique)
+
+What you should do in React?
+
+   You should start with creat "State"
+const [salaries, setSalaries] = useState([]); then 
+Call the API when the component loads
+
+
+the full code:
+import { useState, useEffect } from "react";
+
+function App() {
+  const [salaries, setSalaries] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/salaries")
+      .then((res) => res.json())
+      .then((data) => {
+        setSalaries(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div>
+      {salaries.map((sal) => (
+        <div key={sal._id}>
+          <p>{sal.nomsal} {sal.prenomsal}</p>
+          <p>{sal.fonction}</p>
+          <p>{sal.service.nomser}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+ In simple words
+  -The backend gives you a list of employees
+  -You fetch it using GET
+  -You store it in salaries state
+  -Then you display it in your app
+
+In simple words
+The backend gives you a list of employees
+You fetch it using GET
+You store it in salaries state
+Then you display it in your app
