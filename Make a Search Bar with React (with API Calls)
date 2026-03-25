@@ -1,0 +1,52 @@
+import { useState } from 'react';
+import './index.css';
+
+function Serch (){
+    const [input,setInput]=useState("")
+    const[rezz,setRez]=useState([])
+
+    function date(value){
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response)=>response.json())
+        .then((json)=>{
+const rez=json.filter((user)=>{
+    return value &&   
+    user && 
+    user.name && 
+    user.name.toLowerCase().includes(value)
+});
+ setRez(rez);
+        })
+    }
+
+    function handelcheninput(e){
+        setInput(e.target.value)
+        date(e.target.value)
+    }
+
+    return(
+        <div className="search-container">
+            <div className="search-title">
+                Search
+                <input 
+                  type="text" 
+                  className="search-input" 
+                  placeholder="What are you looking for..."
+                  value={input}
+                  onChange={handelcheninput}
+                />
+            </div>   
+
+            <div className="search-list">
+               {rezz.map((res,index)=>
+               
+               (                <div key={index}>{res.name}</div>
+)
+               )}
+                
+                Search list</div>   
+        </div>
+    )
+}
+
+export default Serch
