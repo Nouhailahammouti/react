@@ -1,0 +1,43 @@
+import { useState } from 'react';
+import './index.css';
+
+function Serch() {
+  const [input, setInput] = useState("");
+  const [rezz, setRez] = useState([]);
+function date() {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((json) => {
+      const rez = json.filter((user) =>
+        user && user.name && user.name.toLowerCase().includes(input)
+      );
+      setRez(rez);
+    });
+
+  }
+
+  return (
+    <div className="search-container">
+      <div className="search-title">
+        Search
+        <input
+          type="text"
+          className="search-input"
+          placeholder="What are you looking for..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={date}>Check</button>
+      </div>
+
+      <div className="search-list">
+        {rezz.length > 0
+          ? rezz.map((res, index) => <div key={index}>{res.name}</div>)
+          : <div>No results yet</div>
+        }
+      </div>
+    </div>
+  );
+}
+
+export default Serch;
