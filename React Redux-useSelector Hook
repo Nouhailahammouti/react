@@ -1,0 +1,48 @@
+Soit l’état initiale du store redux:
+InitialState = {  
+Trottinette :{ 
+id: 14, 
+Matricule: "1 A 4321", 
+Date_derniere_maintenance: "01/06/2025", 
+Date_prochaine_maintenance: "01/08/2025", 
+BatterieUtilisee: { 
+Id : 135, 
+Capacite : 73, 
+Numero_serie : "BAT-202", 
+sante_batterie: 95, 
+nombre_cycles: 2127, 
+statut: "En Utilisation", 
+} 
+,Reparateurs :[ {id :…,Nom :…}, {id :…,Nom :…},…], 
+,Batteries :[ {id :…,Numero_serie :…}, {id :…, Numero_serie:…},], 
+,StatutBatterie :[ "En Stock","En Utilisation","Retiré"] 
+}; 
+///////////
+import React from 'react'; 
+import { useSelector } from 'react-redux'; 
+ 
+const DetailsTrottinette = () => { 
+  const trottinette = useSelector(state => state.Trottinette); 
+ 
+  return ( 
+    <div> 
+      <h1>Détails de la Trottinette</h1> 
+      <p>ID: {trottinette.id}</p> 
+      <p>Matricule: {trottinette.Matricule}</p> 
+      <p>Date dernière maintenance: 
+{trottinette.Date_derniere_maintenance}</p> 
+      <p>Date prochaine maintenance: 
+{trottinette.Date_prochaine_maintenance}</p> 
+      <h2>Batterie Utilisée</h2> 
+      <p>ID: {trottinette.BatterieUtilisee.Id}</p> 
+      <p>Capacité: {trottinette.BatterieUtilisee.Capacite}</p> 
+      <p>Numéro de série: {trottinette.BatterieUtilisee.Numero_serie}</p> 
+      <p>Santé de la batterie: 
+{trottinette.BatterieUtilisee.sante_batterie}</p> 
+      <p>Nombre de cycles: {trottinette.BatterieUtilisee.nombre_cycles}</p> 
+      <p>Statut: {trottinette.BatterieUtilisee.statut}</p> 
+    </div> 
+  ); 
+}; 
+ 
+export default DetailsTrottinette;
