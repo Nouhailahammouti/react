@@ -1,0 +1,44 @@
+import { useState } from "react"
+
+function Eff2023(){
+const[mat,setMat]=useState([]);
+const[marq,setMarq]=useState([]);
+const[date,setDate]=useState([])
+const[colour,setCouler]=useState([])
+function Add(){
+const valuematr=document.getElementById("matr").value;
+    document.getElementById("matr").value="";
+const valuemarq=document.getElementById("marqe").value;
+    document.getElementById("marqe").value="";
+    const valuedate=document.getElementById("date").value;
+    document.getElementById("date").value="";
+const valuecouler=document.getElementById("couler").value;
+    document.getElementById("couler").value="";
+
+setMat([...mat,valuematr]);
+setMarq([...marq,valuemarq]);
+setDate([...date,valuedate]);
+setCouler([...colour,valuecouler]);
+}
+    return(
+<div>
+    <h1> getion de voituer</h1>
+    <label htmlFor="">Matrucuil</label><br />
+    <input type="text" id="matr" /><br /><br />
+    <label htmlFor="">Marque</label><br />
+<select name="" id="marqe">
+    <option value="">toyota</option>
+     <option value="">meci</option>
+    <option value="">bahbahani</option>
+</select><br /><br />
+<label htmlFor=""> date de miss..</label><br />
+    <input type="date"  id="date"/><br /><br />
+    <label htmlFor="">coluer</label><br />
+    <input type="text" id="couler" /> <br /><br /><button onClick={Add}> conferm</button>
+<ul>
+    {mat.map((mats,index)=><li key={index}> mat: {mat} /  marq: {marq}   / date: {date} /  couler: {colour}</li> )}</ul>
+</div>
+
+    )
+}
+export default Eff2023
